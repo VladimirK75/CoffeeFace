@@ -1,20 +1,17 @@
 #!/bin/ksh
-
 HOSTS="$1";
 [ -z "$HOSTS" ]  && echo "The first parameter must be full name of the file with list of hosts!" && exit;
-
 TXRATE="$2";
 [ -z "$TXRATE" ] && echo "The 2-d parametet must be number of txRate option (like 500)" && exit;
-
 TXDURATION="$3";
 [ -z "$TXRATE" ] && echo "The 3-d parametet must be number of txDurationMs option (like 600000 = 10min)" && exit;
-
 DOMAIN="$4";
 [ -z "$DOMAIN" ] && echo "The 4-th parameter must be DOMAIN name (like \"uk.db.com\") !" && exit;
 
 JAVA_HOME=/local/apps/cache/JRE_LINUX_7;
 JAVA=$JAVA_HOME/bin/java;
 RUN_DIR=/home/dfluser/datagram/;
+cd $RUN_DIR
 WGET_CMD="wget http://gmrepo.gslb.db.com:8481/nexus-webapp/content/groups/gtrepositories/com/oracle/coherence/coherence/3.7.1.12/coherence-3.7.1.12.jar -O coherence-3.7.1.12.jar";
 DT_RXTX_OPT="-txDurationMs $TXDURATION -txRate $TXRATE -rxBufferSize 250 -packetSize 8192";
 DT_JAVA_OPT="-cp coherence-3.7.1.12.jar -server com.tangosol.net.DatagramTest";
@@ -33,7 +30,7 @@ do
                 CMD="$CMD -polite";
         fi
                 CMD="$CMD $DT_HOSTS";
-        ssh $host.$DOMAIN "$CMD" >/dev/null 2>dt_$host.log &;
+        ssh -n $host.$DOMAIN "$CMD" >/dev/null 2>dt_$host.log &;
                 echo "$!" > dt_$host.pid;
         echo "Started on $host";
 done
@@ -45,6 +42,7 @@ do
         rm dt_$host.pid;
 done;
 #
+echo "Generating report....";
 rm report.html
 for host in `cat $HOSTS`
 do
