@@ -17,7 +17,7 @@ DT_RXTX_OPT="-txDurationMs $TXDURATION -txRate $TXRATE -rxBufferSize 250 -packet
 DT_JAVA_OPT="-cp coherence-3.7.1.12.jar -server com.tangosol.net.DatagramTest";
 
 HN=0;
-LAST=`cat $HOSTS | wc -l `;
+LAST=`cat $HOSTS | wc -l |tr -d ' '`;
 #
 for host in `cat $HOSTS`
 do
