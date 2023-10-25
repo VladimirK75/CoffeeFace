@@ -1,16 +1,16 @@
-' 1) WScript.Arguments(0) - путь к ini файлу
-'    WScript.Arguments(0) - список рассылки, тогда базовый ini брать \\IRON2\secur$\deal68\Util\MailTo\Default.ini
-' 2) WScript.Arguments(1) - путь к аттачу
-' 3) WScript.Arguments(2) - переименовывать файл 
+' 1) WScript.Arguments(0) - ГЇГіГІГј ГЄ ini ГґГ Г©Г«Гі
+'    WScript.Arguments(0) - Г±ГЇГЁГ±Г®ГЄ Г°Г Г±Г±Г»Г«ГЄГЁ, ГІГ®ГЈГ¤Г  ГЎГ Г§Г®ГўГ»Г© ini ГЎГ°Г ГІГј \\IRON2\secur$\deal68\Util\MailTo\Default.ini
+' 2) WScript.Arguments(1) - ГЇГіГІГј ГЄ Г ГІГІГ Г·Гі
+' 3) WScript.Arguments(2) - ГЇГҐГ°ГҐГЁГ¬ГҐГ­Г®ГўГ»ГўГ ГІГј ГґГ Г©Г« 
 '    1 - YYYY-MM-DD
 '    2 - HH-MI-SS
 '    3 - YYYY-MM-DD_HH-MI-SS
-' допустимые замены:
+' Г¤Г®ГЇГіГ±ГІГЁГ¬Г»ГҐ Г§Г Г¬ГҐГ­Г»:
 ' %CurrentDateEng% - 10/31/2011
 ' %CurrentDateRUS% - 31.10.2011
 ' %CurrentTime% - 10:23:44
 ' %AttachName% - FileName.FileExt
-' %ArchiveFolder% - U:\DiasoftReportArchive\SMTH (из ini файла)
+' %ArchiveFolder% - U:\DiasoftReportArchive\SMTH (ГЁГ§ ini ГґГ Г©Г«Г )
 Const DefINIfile   = "\\IRON2\secur$\deal68\Util\MailTo\Default.ini"
 Const DefIniDir    = "\\IRON2\secur$\deal68\Util\MailTo\"
 
@@ -116,7 +116,7 @@ Function ReadIni( myFilePath, mySection, myKey )
                             If ReadIni = "" Then
                                ReadIni = " "
                             End If
-'Замена условных на безусловные
+'Г‡Г Г¬ГҐГ­Г  ГіГ±Г«Г®ГўГ­Г»Гµ Г­Г  ГЎГҐГ§ГіГ±Г«Г®ГўГ­Г»ГҐ
 							ReadIni = Replace(ReadIni, "<br>"            , vbCrLf)
 							ReadIni = Replace(ReadIni, "%CurrentDateEng%", CurrentDateEng)
 							ReadIni = Replace(ReadIni, "%CurrentDateRUS%", CurrentDateRUS)
@@ -148,10 +148,10 @@ End Function
 
 sub SendEmail( strRecipients, strTextSubject, strTextBody, strFilePath )
   Dim omail, StrSign, srtMessage, strLogFile
-  Const strSMTPServer = "smtphub.eur.mail.db.com"
-  Const StrSender     = "diasoft-support@db.com"
+  Const strSMTPServer = "com"
+  Const StrSender     = "com"
   Set omail = CreateObject("CDO.Message")
-  StrSign       = vbCrLf & "-- " & vbCrLf & "from diasoft-support@db.com" & vbCrLf & Now
+  StrSign       = vbCrLf & "-- " & vbCrLf & "from support" & vbCrLf & Now
  On Error resume next
   with omail
     .From = StrSender
