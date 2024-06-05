@@ -4,7 +4,7 @@ class:
 size: 16:9
 paginate: true
 headingDivider: 2 
-marp: false
+marp: true
 
 ---
 <style>
