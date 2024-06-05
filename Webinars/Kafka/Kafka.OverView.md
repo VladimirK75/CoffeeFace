@@ -6,6 +6,7 @@ paginate: true
 headingDivider: 2 
 marp: false
 
+---
 <style>
 section {
   padding-top: 150px;
@@ -23,7 +24,6 @@ ul {font-size: 18px;}
 table {font-size: 18px;}
 
 </style>
----
 
 # Kafka
    Быстрее, чем message broker
