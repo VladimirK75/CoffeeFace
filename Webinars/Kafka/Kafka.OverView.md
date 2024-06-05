@@ -126,7 +126,7 @@ table {font-size: 18px;}
 ![bg 90% fit](./images/ksqldbkafstr1.png)
 
 # Kafka topic
-![bg right:40% fit](./images/MessageBrokers-Kafka_inside.png)
+![bg right:40% fit](./images/consumer-group-kafka.png)
 
 **Kafka только MQ - самограничения**
 1) Data = Plain Text (csv,xml,json)
@@ -158,7 +158,7 @@ table {font-size: 18px;}
 Если нужно распараллеливание потоковой stateful-обработки внутри экземпляра приложения в пределах одного кластера без разделения на производство и потребление событий, библиотека Kafka Streams будет отличным выбором.
 
 # Kafka cluster - что у тебя внутри (обобщая)?
-![bg w:60%](./images/Kafka_Internals_004.png)
+![bg w:60% fit](./images/Kafka_Internals_004.png)
 
 # Kafka cluster может больше, чем только брокер
 > Нативные языки для Kafka Streams - java, scala
